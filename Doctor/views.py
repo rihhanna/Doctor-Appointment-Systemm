@@ -5,9 +5,13 @@ from django.contrib import messages
 from .forms import *
 from .models import *
 from django.shortcuts import redirect, get_object_or_404
+from django.http import HttpResponse
 
 def index(request):
     return render(request, 'index.html')
+
+def homepage(request):
+    return HttpResponse("<h1>Welcome to your Django App!</h1>")
 
 def book_appointment(request):
     if request.method == 'POST':
