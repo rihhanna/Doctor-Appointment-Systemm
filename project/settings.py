@@ -29,7 +29,7 @@ ALLOWED_HOSTS = ['*']
 
 CSRF_TRUSTED_ORIGINS = [
     'https://doctor-appointment-systemm.up.railway.app',
-    'https://doctor-appointment-systemm-empty.up.railway.app',
+   
 ]
 
 # Application definition
