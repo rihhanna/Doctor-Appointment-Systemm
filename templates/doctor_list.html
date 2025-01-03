@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Welcome to doctors page </h1>
+<form method="post" action="/registeration/">
+    {% csrf_token %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Full Name</th>
+                            <th>Shift</th>
+                            <th>Speciality</th>
+                            <th>Position</th>
+                            <th>Update</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in results %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ i.fullname }}</td>
+                            <td>{{ i.shift }}</td>
+                            <td>{{ i.speciality }}</td>
+                            <td>{{ i.position }}</td>
+                            <td><a href="{% url 'yupdate' i.id %}" class="btn btn-primary">Update</a></td>
+                            <td><a href="{% url 'udelete' i.id %}" class="btn btn-danger">Delete</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<style>
+    #containerr{
+        width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        border: 1px solid #312d2d;
+        border-radius: 20px;
+        background-color: #6580fa;
+        display: flex;
+        justify-content: center;
+    }
+</style>
+<body>
+   <div class="container" id="containerr" >
+     <div class="card" style="width: 550px; height: fit-content; background-color: rgb(232, 236, 243);">
+        <h1 style="text-align: center;">Successfully Added!</h1>
+        
+         <a href="{% url 'contact_list' %}" class="btn btn-primary mt-3 mb-3 " style="width: 300px; margin: 0 auto; "> view contacts </a>
+         <a href="{% url 'contact' %}" class="btn btn-info mt-3 mb-3 " style="width: 300px; margin: 0 auto; ">Add another contact </a>
+
+     </div>
+   </div> 
+
+
+{% endblock %}

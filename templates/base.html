@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Appointment System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    {% load static %}
+    <style>
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .navbar {
+            background: linear-gradient(90deg, rgba(0,123,255,1) 0%, rgba(0,76,179,1) 100%);
+        }
+        .navbar-brand, .nav-link {
+            color: #fff !important;
+            font-weight: bold;
+            text-transform: uppercase;
+            position: relative;
+            transition: color 0.3s;
+        }
+        .navbar-brand img {
+            height: 50px;
+            width: 50px;
+            margin-right: 10px;
+            border-radius: 50%; /* Make the logo image circular */
+            border: 2px solid #fff; /* Add a white border */
+            padding: 3px; /* Add some padding inside the border */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+            transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for transform and shadow */
+        }
+        .navbar-brand img:hover {
+            transform: scale(1.1); /* Slightly enlarge the image on hover */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhance the shadow on hover */
+        }
+        .navbar-nav .nav-link {
+            padding-left: 15px;
+            padding-right: 15px;
+            transition: background-color 0.3s;
+        }
+        .nav-item.active .nav-link {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+        }
+        .nav-link::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width .3s;
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #ffeb3b !important;
+        }
+        .navbar-nav.ml-auto .nav-item .nav-link {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .jumbotron {
+            background-color: #fff;
+            padding: 2rem 2rem;
+            border-radius: 0.5rem;
+        }
+        .card {
+            border: none;
+            border-radius: 0.5rem;
+        }
+        .card-header {
+            background-color: #007bff;
+            color: #fff;
+        }
+        .doctor-img {
+            max-width: 100%;
+            height: auto;
+        }
+        footer {
+            background-color: #343a40;
+            color: #fff;
+            padding: 1.5rem 0;
+            margin-top: auto;
+        }
+        .footer-links a {
+            color: #fff;
+            margin: 0 10px;
+        }
+        .footer-links a:hover {
+            text-decoration: none;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="{% url 'index' %}">
+            <img src="https://i.postimg.cc/cLhKHRJm/logo.jpg" alt="Logo"> Doctor Appointment
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                {% if user.is_authenticated %}
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'index' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'about' %}">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'doctor_register' %}">Doctors</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Login</a>
+                    </li>
+                {% endif %}
+            </ul>
+            {% if user.is_authenticated %}
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </a>
+                </li>
+            </ul>
+            {% endif %}
+        </div>
+    </nav>
+    
+    <div class="container mt-5">
+        {% block content %}
+        
+        {% endblock %}
+    </div>
+    
+    <footer class="text-center" style="background-color: #343a40; color: #fff;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mx-auto">
+                    <h5 class="mb-4">Connect with Us</h5>
+                    <!-- Social media icons -->
+                    <ul class="list-inline mb-4">
+                        <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fab fa-youtube"></i></a></li>
+                        <!-- Add more social media icons as needed -->
+                    </ul>
+                    <p>&copy; 2024 Doctor Appointment System. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

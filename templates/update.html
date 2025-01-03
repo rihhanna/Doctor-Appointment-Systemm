@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center horizontally */
+    }
+
+    .form-container {
+        width: 100%;
+        max-width: 600px; /* Optional: limit the max width of the form */
+    }
+</style>
+
+<h1>Updating the Doctors information </h1>
+
+<div class="container mt-4">
+    
+    <div class="form-container">
+        <form method="post" action="">
+    {% csrf_token %}
+
+        {{formss.as_p}}
+        
+        <button class="btn btn-primary">save</button>
+
+</form>
+</div>
+</div>
+
+
+{% endblock %}

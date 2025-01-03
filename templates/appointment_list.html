@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    table, th, td {
+        border: 1px solid black;
+    }
+    th, td {
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+</style>
+
+<h1>Appointment List</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Doctor</th>
+            <th>Patient Name</th>
+            <th>Patient Email</th>
+            <th>Appointment Date</th>
+            <th>Appointment Time</th>
+            <th>Reason</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for appointment in appointments %}
+            <tr>
+                <td>{{ appointment.doctor.fullname }}</td>
+                <td>{{ appointment.patient_name }}</td>
+                <td>{{ appointment.patient_email }}</td>
+                <td>{{ appointment.appointment_date }}</td>
+                <td>{{ appointment.appointment_time }}</td>
+                <td>{{ appointment.reason }}</td>
+                <td>
+                    <a href="{% url 'update_appointment' appointment.id %}" class="btn btn-warning btn-sm">Update</a>
+                    <a href="{% url 'delete_appointment' appointment.id %}" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

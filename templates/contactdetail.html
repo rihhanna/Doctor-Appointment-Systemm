@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container" >
+        <h1>Contact Details</h1>
+        <div class="card mt-3" style="width: 18rem; ">
+            {% if contact.image %}
+                <img src="{{ contact.image.url }}" class="card-img-top" alt="{{ contact.first_name }}">
+            {% else %}
+                <img src="https://via.placeholder.com/150" class="card-img-top" alt="No Image">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ contact.first_name }} {{ contact.last_name }}</h5>
+                <p class="card-text"><strong>Email:</strong> {{ contact.email }}</p>
+                <p class="card-text"><strong>Phone:</strong> {{ contact.phone_number }}</p>
+            </div>
+        </div>
+        <a href="{% url 'contact_list' %}" class="btn btn-primary mt-3" >Back to Contact List</a>
+    </div>
+
+{% endblock %}

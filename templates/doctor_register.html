@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .form-container {
+        width: 100%;
+        max-width: 600px;
+    }
+</style>
+
+<div class="container mt-4">
+    <h1 class="mb-4">Welcome to the Doctor Register</h1>
+    
+    <div class="form-container">
+        <form id="register-form" method="post" action="">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                {{ form.as_p }}
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+</div>
+
+<!-- JavaScript for form validation -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const form = document.getElementById("register-form");
+        
+        form.addEventListener("submit", function(event) {
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+
+            form.classList.add("was-validated");
+        });
+    });
+</script>
+
+{% endblock %}

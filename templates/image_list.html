@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+    body {
+        background: url('https://example.com/your-background-image.jpg') no-repeat center center fixed;
+        background-size: cover;
+    }
+    
+    .container {
+        margin-top: 20px;
+    }
+
+    .card {
+        margin-bottom: 20px;
+        border-radius: 15px;
+        overflow: hidden;
+        transition: transform 0.3s, box-shadow 0.3s;
+        position: relative;
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .card img {
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        transition: transform 0.3s;
+    }
+
+    .card:hover img {
+        transform: scale(1.1);
+    }
+
+    .card-title, .card-subtitle {
+        margin-bottom: 10px;
+    }
+
+    .card-body {
+        background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+        padding: 20px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, rgba(0, 123, 255, 0.5), rgba(0, 76, 179, 0.5));
+        opacity: 0;
+        transition: opacity 0.3s;
+        z-index: 0;
+    }
+
+    .card:hover::before {
+        opacity: 1;
+    }
+
+    h1 {
+        color: #007bff;
+        font-weight: bold;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+</style>
+
+<div class="container">
+    <h1 class="text-center mb-4">Image List</h1>
+    <div class="row">
+        {% for image in images %}
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ image.image.url }}" class="card-img-top" alt="{{ image.title }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ image.title }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Name of Patient: {{ image.Patient_name }}</h6>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

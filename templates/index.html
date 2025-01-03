@@ -1,0 +1,191 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<style>
+    /* Import Google Font */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+    /* Apply font family and styles */
+    .jumbotron {
+        position: relative;
+        overflow: hidden;
+        padding: 50px;
+        color: rgb(247, 245, 245); /* Set text color to white for better visibility */
+        font-family: 'Poppins', sans-serif; /* Apply Poppins font */
+        text-align: center;
+        background: rgba(0, 0, 0, 0.5); /* Add a background overlay for better readability */
+    }
+
+    .jumbotron video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -1;
+        transform: translate(-50%, -50%);
+        filter: blur(1px);
+    }
+
+    .display-4 {
+        font-size: 3.5rem; /* Increase font size for display heading */
+        font-weight: 700; /* Increase font weight for emphasis */
+    }
+
+    .lead {
+        font-size: 1.25rem; /* Increase font size for lead paragraph */
+    }
+
+    /* Style the button */
+    .btn-primary {
+        background-color: #007bff; /* Set button background color */
+        border-color: #007bff; /* Set button border color */
+        font-family: 'Poppins', sans-serif; /* Apply Poppins font */
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3; /* Darken button background color on hover */
+        border-color: #0056b3; /* Darken button border color on hover */
+    }
+
+    /* Card Styles */
+    .card {
+        transition: transform 0.3s, box-shadow 0.3s;
+        border-radius: 15px;
+    }
+
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-header {
+        background-color: #007bff;
+        color: #fff;
+        border-radius: 15px 15px 0 0;
+    }
+
+    .card-body {
+        transition: transform 0.3s;
+    }
+
+    .card-body:hover {
+        transform: scale(1.05);
+    }
+
+    .card-body img {
+        border-radius: 10px;
+        transition: transform 0.3s;
+    }
+
+    .card-body img:hover {
+        transform: scale(1.1);
+    }
+
+    .card h4 {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+    }
+
+    .card p {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 300;
+    }
+
+    .card .btn {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 500;
+    }
+</style>
+<div class="jumbotron text-center">
+    <video autoplay muted loop>
+        <source src="{% static 'videos/home.mp4' %}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <h1 class="display-4">Welcome to the Doctor Appointment System</h1>
+    <p class="lead">Easily book appointments with your preferred doctors.</p>
+    <hr class="my-4">
+    <a class="btn btn-primary btn-lg" href="{% url 'book_appointment' %}" role="button">Book an Appointment</a>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">Doctors</h4>
+            </div>
+            <div class="card-body text-center">
+                <img src="{% static 'images/doctor.jpeg' %}" alt="Doctor 1" class="img-fluid mb-3">
+                <p>View profiles of all our doctors and choose the one that fits your needs.</p>
+                <a href="/doctor_list" class="btn btn-primary">View Profiles</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">SCAN View</h4>
+            </div>
+            <div class="card-body text-center">
+                <img src="{% static 'images/scan2.jpeg' %}" alt="Doctor 3" class="img-fluid mb-3">
+                <p>If you need any help, feel free to reach out to our support team.</p>
+                <a href="/image_list" class="btn btn-primary">VIEW Scans</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">UPLOAD SCANS</h4>
+            </div>
+            <div class="card-body text-center">
+                <img src="{% static 'images/scans.jpeg' %}" alt="Doctor 3" class="img-fluid mb-3">
+                <p>If you need any help, feel free to reach out to our support team.</p>
+                <a href="/upload_image" class="btn btn-primary">UPLOAD NOW</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">Appointments</h4>
+            </div>
+            <div class="card-body text-center">
+                <img src="{% static 'images/appointment.jpeg' %}" alt="Doctor 2" class="img-fluid mb-3">
+                <p>Check available appointment slots and manage a bookings.</p>
+                <a href="/appointment_list" class="btn btn-primary">Patient</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">About US</h4>
+            </div>
+            <div class="card-body text-center">
+                <img src="{% static 'images/about2.jpeg' %}" alt="Doctor 3" class="img-fluid mb-3">
+                <p>If you need any help, feel free to reach out to our support team.</p>
+                <a href="/about" class="btn btn-primary">about</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">Contact </h4>
+            </div>
+            <div class="card-body text-center">
+                <img src="{% static 'images/contact.jpeg' %}" alt="Doctor 3" class="img-fluid mb-3">
+                <p>If you need any help, feel free to reach out to our support team.</p>
+                <a href="/contact" class="btn btn-primary">Contact Us</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

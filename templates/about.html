@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+    body {
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .jumbotron {
+        background-color: #f8f2f2;
+        padding: 2rem 2rem;
+        border-radius: 0.5rem;
+        text-align: center;
+        background-size: cover;
+        background-position: center;
+        color: #faf6f6;
+    }
+
+    .jumbotron h1.display-4 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        color: #007bff;
+    }
+
+    .jumbotron p.lead {
+        font-size: 1.25rem;
+        font-weight: 400;
+        color: #007bff;
+    }
+
+    .jumbotron hr.my-4 {
+        border-top: 1px solid #007bff;
+    }
+
+    .jumbotron p {
+        font-size: 1rem;
+        font-weight: 300;
+        color: #007bff;
+    }
+
+    .card {
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .card img {
+        border-radius: 10px;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .card img:hover {
+        transform: scale(1.05);
+    }
+
+    .card-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .card-text {
+        font-size: 1rem;
+        font-weight: 400;
+        color: #666;
+    }
+</style>
+<div class="container mt-5">
+    <div class="jumbotron">
+        <h1 class="display-4">About Our Hospital</h1>
+        <p class="lead">Welcome to our hospital, where we prioritize your health and well-being.</p>
+        <hr class="my-4">
+        <p>We have been serving the community with dedication and excellence for over 50 years. Our team of highly qualified doctors, nurses, and staff are committed to providing the best care possible.</p>
+    </div>
+
+    
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">Our Mission</h4>
+                </div>
+                <div class="card-body">
+                    <img src="{% static 'images/mission.jpeg' %}" alt="Mission Image" class="img-fluid mb-3 rounded">
+                    <p>Our mission is to deliver high-quality healthcare services with compassion and respect. We strive to improve the health of our community through innovative treatments and continuous education.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">Our Vision</h4>
+                </div>
+                <div class="card-body">
+                    <img src="{% static 'images/Vision.jpeg' %}" alt="Vision Image" class="img-fluid mb-3 rounded">
+                    <p>We envision a healthier community where every individual has access to excellent healthcare services. Our goal is to be a leader in the medical field, known for our patient-centered approach and cutting-edge technology.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">Advanced Facilities</h4>
+                </div>
+                <div class="card-body">
+                    <img src="{% static 'images/facility.jpeg' %}" alt="Facilities Image" class="img-fluid mb-3 rounded">
+                    <p>Our hospital is equipped with state-of-the-art facilities and advanced medical equipment to ensure the best care for our patients.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">Qualified Staff</h4>
+                </div>
+                <div class="card-body">
+                    <img src="{% static 'images/staff.jpeg' %}" alt="Staff Image" class="img-fluid mb-3 rounded">
+                    <p>We have a team of highly qualified and experienced medical professionals who are dedicated to providing top-notch healthcare services.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">Patient Care</h4>
+                </div>
+                <div class="card-body">
+                    <img src="{% static 'images/care.jpeg' %}" alt="Patient Care Image" class="img-fluid mb-3 rounded">
+                    <p>Our primary focus is on patient care. We provide personalized treatment plans and ensure that our patients receive the attention and care they deserve.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
