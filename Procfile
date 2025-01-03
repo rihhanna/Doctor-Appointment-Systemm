@@ -1,1 +1,1 @@
-web: gunicorn doctor-appointment-system.wsgi
+web: gunicorn project.wsgi
