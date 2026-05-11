@@ -151,7 +151,7 @@ Add your homepage screenshot here:
 ## 📅 Appointment Booking Page
 
 ```markdown
-![Appointment Page](staticimages/Appointment.png)
+![Home Page](static/images/Appointment.png)
 ```
 
 ---
