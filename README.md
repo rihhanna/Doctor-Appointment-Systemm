@@ -143,7 +143,7 @@ http://127.0.0.1:8000
 Add your homepage screenshot here:
 
 ```markdown
-![Home Page](images/homepage.png)
+![Home Page](static/images/homepage.png)
 ```
 
 ---
@@ -151,7 +151,7 @@ Add your homepage screenshot here:
 ## 📅 Appointment Booking Page
 
 ```markdown
-![Appointment Page](images/appointment.png)
+![Appointment Page](staticimages/Appointment.png)
 ```
 
 ---
